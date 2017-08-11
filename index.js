@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 //route handler for HTTP requests from Express
 app.get('/', (req, res) => {
-  res.send({Boot: "Review App"});
+  res.send({Boot: "Review App Part 2"});
 });
 //runtime env variable from deployment + our dev port
 const PORT = process.env.PORT || 8080;

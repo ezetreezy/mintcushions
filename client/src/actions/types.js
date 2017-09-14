@@ -1,0 +1,11 @@
+export const FETCH_USER = 'fetch_user';
+export const SIGNUP_MESSAGE_ERROR = 'signup_error';
+export const SIGNUP_MESSAGE_SUCCESS = 'signup_success';
+export const LOGIN_MESSAGE_ERROR = 'login_error';
+export const LOGIN_MESSAGE_SUCCESS = 'login_success';
+export const CUSTOM_MESSAGE = 'custom_message';
+export const CLEAR_MESSAGE = 'clear_message';
+export const PAYMENT_MESSAGE_SUCCESS = 'payment_message';
+export const PAYMENT_MESSAGE_ERROR = 'payment_error';
+export const UPDATE_MESSAGE_SUCCESS = 'update_success';
+export const UPDATE_MESSAGE_ERROR = 'update_error';

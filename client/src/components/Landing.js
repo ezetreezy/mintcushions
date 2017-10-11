@@ -14,10 +14,10 @@ const Landing = () => {
         <div className="landingMain">
             <div className="landingWrapper robot">
                 <Link className="landingWrapper-item medium adidas" to={'/boots/Adidas'}>
-                    <div className="front">
+                    <div className="front face">
                       <img src={require('../Assets/adidas.svg')} alt={"Adidas"}/>
                     </div>
-                    <div className="back center" style={{backgroundColor: '#8A2BE2'}}>
+                    <div className="back face center">
                       <div className="envelope">
                         <span className="fa fa-envelope-open fa-5x" aria-hidden="true"></span>
                         <p>Review</p>
@@ -28,7 +28,7 @@ const Landing = () => {
                     <div className="front face">
                     <img src={require('../Assets/nikeLogo2.svg')} alt={"Nike"}/>
                     </div>
-                    <div className="back face center" style={{backgroundColor: '#8A2BE2'}}>
+                    <div className="back face center">
                         <div className="envelope">
                           <span className="fa fa-envelope-open fa-4x" aria-hidden="true"></span>
                           <p>Review</p>
@@ -39,7 +39,7 @@ const Landing = () => {
                     <div className="front face">
                     <img src={require('../Assets/pumaLogo2.svg')} alt={"Puma"}/>
                     </div>
-                    <div className="back face center" style={{backgroundColor: '#8A2BE2'}}>
+                    <div className="back face center">
                         <div className="envelope">
                           <span className="fa fa-envelope-open fa-5x" aria-hidden="true"></span>
                           <p>Review</p>
@@ -50,7 +50,7 @@ const Landing = () => {
                     <div className="front face">
                           <img src={require('../Assets/mizunoLogo.svg')} alt={"Mizuno"} />
                     </div>
-                    <div className="back face center" style={{backgroundColor: '#8A2BE2'}}>
+                    <div className="back face center" >
                           <div className="envelope">
                             <span className="fa fa-envelope-open fa-4x" aria-hidden="true"></span>
                             <p>Review</p>
@@ -61,7 +61,7 @@ const Landing = () => {
                   <div className="front face">
                     <img src={require('../Assets/underALogo.svg')} alt={"Under Armour"}/>
                   </div>
-                  <div className="back face center" style={{backgroundColor: '#8A2BE2'}}>
+                  <div className="back face center">
                       <div className="envelope">
                         <span className="fa fa-envelope-open fa-5x" aria-hidden="true"></span>
                         <p>Review</p>
@@ -72,7 +72,7 @@ const Landing = () => {
                   <div className="front face">
                       <img src={require('../Assets/nBalanceLogo.svg')} alt={"New Balance"}/>
                   </div>
-                  <div className="back face center" style={{backgroundColor: '#8A2BE2'}}>
+                  <div className="back face center">
                       <div className="envelope">
                         <span className="fa fa-envelope-open fa-5x" aria-hidden="true"></span>
                         <p>Review</p>
@@ -83,7 +83,7 @@ const Landing = () => {
                   <div className="front face">
                     <img src={require('../Assets/umbroLogo.svg')} alt={"Umbro"}/>
                   </div>
-                  <div className="back face center" style={{backgroundColor: '#8A2BE2'}}>
+                  <div className="back face center">
                       <div className="envelope">
                         <span className="fa fa-envelope-open fa-4x" aria-hidden="true"></span>
                         <p>Review</p>
@@ -94,7 +94,7 @@ const Landing = () => {
                     <div className="front face">
                       <img src={require('../Assets/hummelLogo.svg')} alt={"Hummel"}/>
                     </div>
-                    <div className="back face center" style={{backgroundColor: '#8A2BE2'}}>
+                    <div className="back face center">
                         <div className="envelope">
                           <span className="fa fa-envelope-open fa-4x" aria-hidden="true"></span>
                           <p>Review</p>

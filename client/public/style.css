@@ -764,7 +764,6 @@
     grid-template-rows: repeat(8, 1fr);
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 5px;
-    perspective: 1000;
     min-height: 600px;
   }
   .landingWrapper-item {
@@ -776,10 +775,10 @@
     perspective: 1000;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+  }
+  .front,.back{
     transition: all 0.8s ease-in-out;
     -webkit-transition: all 0.8s ease-in-out;
-  }
-  .front {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -790,36 +789,34 @@
     display:flex;
     align-items: center;
     justify-content:center;
-    transition: all 0.8s ease-in-out;
-    -webkit-transition: all 0.8s ease-in-out;
-    -moz-transform: rotateX(0deg);
-    -webkit-transform: rotateX(0deg);
-    -o-transform: rotateX(0deg);
-    -ms-transform: rotateX(0deg);
-    transform: rotateX(0deg);
+  }
+  .front {
     z-index: 2;
+    background: black;
   }
   .back {
-    display: absolute;
-    width: 100%;
-    height: 100%;
     color: white;
     font-size: 10px;
-    display: flex;
-    align-items: center;
-    justify-content:center;
     background-color: #8A2BE2;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    transition: all 0.8s ease-in-out;
-    -webkit-transition: all 0.8s ease-in-out;
     -moz-transform: rotateX(180deg);
     -webkit-transform: rotateX(180deg);
     -o-transform: rotateX(180deg);
     -ms-transform: rotateX(180deg);
     transform: rotateX(180deg);
+  }
+  .landingWrapper-item:hover .front{
+    -moz-transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+  .landingWrapper-item:hover .back{
+    -moz-transform: rotateX(360deg);
+    -webkit-transform: rotateX(360deg);
+    -o-transform: rotateX(360deg);
+    -ms-transform: rotateX(360deg);
+    transform: rotateX(360deg);
   }
   .envelope{
   position: absolute;
@@ -835,42 +832,30 @@
     padding:0;
     margin:0;
   }
-  .landingWrapper-item:hover{
-    -moz-transform: rotateX(180deg);
-    -webkit-transform: rotateX(180deg);
-    -o-transform: rotateX(180deg);
-    -ms-transform: rotateX(180deg);
-    transform: rotateX(180deg);
-  }
+
   .landingWrapper-item.medium{
     grid-row: span 2;
     grid-column: span 2;
-    background: rgb(38,38,83);
   }
   .landingWrapper-item.large{
     grid-row: span 3;
     grid-column: span 3;
-    background-color: black;
   }
   .landingWrapper-item.small{
     grid-row: span 1;
     grid-column: span 1;
-    background-color: rgb(102, 135, 200);
   }
   .landingWrapper-item.tall{
     grid-row: span 3;
     grid-column: span 2;
-    background: #4C4CA6;
   }
   .landingWrapper-item.wide{
     grid-row: span 2;
     grid-column: span 3;
-    background: #2ecc71;
   }
   .landingWrapper-item.smalllong{
     grid-row: span 1;
     grid-column: span 2;
-    background: #e74c3c;
   }
   .umbro img{
     padding: 5px;
@@ -888,7 +873,6 @@
     width: 100%;
   }
   .adidas{
-    background: #2c3e50 !important;
   }
   .adidas img{
     padding: 5px;
@@ -896,7 +880,6 @@
     width: 100%;
   }
   .puma{
-    background: #3498db !important;
   }
   .puma img{
     padding: 5px;
@@ -904,7 +887,6 @@
     width: 100%;
   }
   .under-armour{
-    background: #8e44ad !important;
   }
   .under-armour img{
     padding: 5px;
@@ -917,7 +899,6 @@
     width: 90%;
   }
   .nike{
-    background: #f39c12 !important;
   }
   .nike img{
     padding: 5px;

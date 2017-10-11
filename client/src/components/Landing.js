@@ -14,10 +14,10 @@ const Landing = () => {
         <div className="landingMain">
             <div className="landingWrapper robot">
                 <Link className="landingWrapper-item medium adidas" to={'/boots/Adidas'}>
-                    <div className="front face">
+                    <div className="front">
                       <img src={require('../Assets/adidas.svg')} alt={"Adidas"}/>
                     </div>
-                    <div className="back face center" style={{backgroundColor: '#8A2BE2'}}>
+                    <div className="back center" style={{backgroundColor: '#8A2BE2'}}>
                       <div className="envelope">
                         <span className="fa fa-envelope-open fa-5x" aria-hidden="true"></span>
                         <p>Review</p>

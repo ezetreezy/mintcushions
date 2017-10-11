@@ -14,10 +14,10 @@ const Landing = () => {
         <div className="landingMain">
             <div className="landingWrapper robot">
                 <Link className="landingWrapper-item medium adidas" to={'/boots/Adidas'}>
-                    <div className="front face">
+                    <div className="front">
                       <img src={require('../Assets/adidas.svg')} alt={"Adidas"}/>
                     </div>
-                    <div className="back face center">
+                    <div className="back">
                       <div className="envelope">
                         <span className="fa fa-envelope-open fa-5x" aria-hidden="true"></span>
                         <p>Review</p>
@@ -25,10 +25,10 @@ const Landing = () => {
                     </div>
                 </Link>
                 <Link className="landingWrapper-item small nike" to={'/boots/Nike'}>
-                    <div className="front face">
+                    <div className="front">
                     <img src={require('../Assets/nikeLogo2.svg')} alt={"Nike"}/>
                     </div>
-                    <div className="back face center">
+                    <div className="back">
                         <div className="envelope">
                           <span className="fa fa-envelope-open fa-4x" aria-hidden="true"></span>
                           <p>Review</p>
@@ -36,10 +36,10 @@ const Landing = () => {
                     </div>
                 </Link>
                 <Link className="landingWrapper-item medium puma" to={'/boots/Puma'}>
-                    <div className="front face">
+                    <div className="front">
                     <img src={require('../Assets/pumaLogo2.svg')} alt={"Puma"}/>
                     </div>
-                    <div className="back face center">
+                    <div className="back">
                         <div className="envelope">
                           <span className="fa fa-envelope-open fa-5x" aria-hidden="true"></span>
                           <p>Review</p>
@@ -47,10 +47,10 @@ const Landing = () => {
                     </div>
                 </Link>
                 <Link className="landingWrapper-item small mizuno" to={'/boots/Mizuno'}>
-                    <div className="front face">
+                    <div className="front">
                           <img src={require('../Assets/mizunoLogo.svg')} alt={"Mizuno"} />
                     </div>
-                    <div className="back face center" >
+                    <div className="back" >
                           <div className="envelope">
                             <span className="fa fa-envelope-open fa-4x" aria-hidden="true"></span>
                             <p>Review</p>
@@ -58,10 +58,10 @@ const Landing = () => {
                     </div>
                 </Link>
                 <Link className="landingWrapper-item wide under-armour" to={'/boots/UndorArmour'}>
-                  <div className="front face">
+                  <div className="front">
                     <img src={require('../Assets/underALogo.svg')} alt={"Under Armour"}/>
                   </div>
-                  <div className="back face center">
+                  <div className="back">
                       <div className="envelope">
                         <span className="fa fa-envelope-open fa-5x" aria-hidden="true"></span>
                         <p>Review</p>
@@ -69,10 +69,10 @@ const Landing = () => {
                   </div>
                 </Link>
                 <Link className="landingWrapper-item tall new-balance" to={'/boots/NewBalance'}>
-                  <div className="front face">
+                  <div className="front">
                       <img src={require('../Assets/nBalanceLogo.svg')} alt={"New Balance"}/>
                   </div>
-                  <div className="back face center">
+                  <div className="back">
                       <div className="envelope">
                         <span className="fa fa-envelope-open fa-5x" aria-hidden="true"></span>
                         <p>Review</p>
@@ -80,10 +80,10 @@ const Landing = () => {
                   </div>
                   </Link>
                 <Link className="landingWrapper-item small umbro" to={'/boots/Umbro'}>
-                  <div className="front face">
+                  <div className="front">
                     <img src={require('../Assets/umbroLogo.svg')} alt={"Umbro"}/>
                   </div>
-                  <div className="back face center">
+                  <div className="back">
                       <div className="envelope">
                         <span className="fa fa-envelope-open fa-4x" aria-hidden="true"></span>
                         <p>Review</p>
@@ -91,10 +91,10 @@ const Landing = () => {
                   </div>
                 </Link>
                 <Link className="landingWrapper-item smalllong hummel" to={'/boots/Hummel'}>
-                    <div className="front face">
+                    <div className="front">
                       <img src={require('../Assets/hummelLogo.svg')} alt={"Hummel"}/>
                     </div>
-                    <div className="back face center">
+                    <div className="back">
                         <div className="envelope">
                           <span className="fa fa-envelope-open fa-4x" aria-hidden="true"></span>
                           <p>Review</p>

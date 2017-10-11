@@ -765,6 +765,10 @@
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 5px;
     min-height: 600px;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
   }
   .landingWrapper-item {
     display: flex;
@@ -828,6 +832,7 @@
   -ms-transform:  translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   }
+  
   .envelope p{
     padding:0;
     margin:0;

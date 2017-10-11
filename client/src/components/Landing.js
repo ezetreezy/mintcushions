@@ -57,7 +57,7 @@ const Landing = () => {
                           </div>
                     </div>
                 </Link>
-                <Link className="landingWrapper-item wide under-armour" to={'/boots/UndorArmour'}>
+                <Link className="landingWrapper-item wide under-armour" to={'/boots/UnderArmour'}>
                   <div className="front">
                     <img src={require('../Assets/underALogo.svg')} alt={"Under Armour"}/>
                   </div>

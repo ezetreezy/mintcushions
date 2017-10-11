@@ -772,6 +772,9 @@
     justify-content: center;
     align-items: center;
     color: white;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     transition: all 0.8s ease-in-out;
   }
@@ -803,15 +806,19 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  text-align: center;
+  margin: 0 auto;
   /*
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+  /*
   -moz-transform:  translateX(-50%) translateY(-50%);
   -webkit-transform:  translateX(-50%) translateY(-50%);
   -o-transform:  translateX(-50%) translateY(-50%);
   -ms-transform:  translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+  */
   }
   .envelope p{
     padding:0;

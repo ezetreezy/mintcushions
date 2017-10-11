@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import {fetchBoot, fetchReviews} from '../actions';
 import _ from 'lodash';
 import Chart from './Chart';
@@ -142,15 +141,15 @@ class BootDisplay extends Component {
   renderReviews(){
     const {authorizedUser, activeReviewList} = this.props;
     return _.map(activeReviewList, review => {
-
+    var isUserReview;
       if(authorizedUser && authorizedUser._id != null)
       {
-      var isUserReview = authorizedUser._id === review._user ?
+       isUserReview = authorizedUser._id === review._user ?
       'list-group-item list-group-item-action list-group-item-info flex-column align-items-start':
        'list-group-item list-group-item-action flex-column align-items-start';
       }
      else{
-       var isUserReview = 'list-group-item list-group-item-action flex-column align-items-start';
+       isUserReview = 'list-group-item list-group-item-action flex-column align-items-start';
      }
 
       return (

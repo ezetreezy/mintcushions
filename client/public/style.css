@@ -810,6 +810,8 @@
   }
   .landingWrapper-item:hover{
     transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
   }
   .landingWrapper-item.medium{
     grid-row: span 2;

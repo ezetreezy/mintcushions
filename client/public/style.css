@@ -798,7 +798,7 @@
     -ms-transform: rotateX(0deg);
     transform: rotateX(0deg);
     z-index: 2;
-    background: black;
+    background: orange;
   }
   .back {
     display: absolute;
@@ -844,17 +844,14 @@
   .landingWrapper-item.medium{
     grid-row: span 2;
     grid-column: span 2;
-    background: rgb(38,38,83);
   }
   .landingWrapper-item.large{
     grid-row: span 3;
     grid-column: span 3;
-    background-color: black;
   }
   .landingWrapper-item.small{
     grid-row: span 1;
     grid-column: span 1;
-    background-color: rgb(102, 135, 200);
   }
   .landingWrapper-item.tall{
     grid-row: span 3;

@@ -4,6 +4,7 @@ import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {loginUser} from '../actions/index';
 import MessageBar from './MessageBar';
+import $ from 'jquery';
 //ReduxForm just handles the state of our form.
 
 //field will invoke renderField at some point in the future
@@ -11,6 +12,13 @@ import MessageBar from './MessageBar';
 //must return some JSX
 //renderField(field = contains some event handlers)
 class LoginAccount extends Component {
+
+  componentDidMount(){
+    $('html, body').css({
+    overflow: 'hidden',
+    height: '100%'
+    });
+  }
 
   renderField(field)
   {

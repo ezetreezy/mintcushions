@@ -3,10 +3,18 @@ import DashboardModule from './DashboardModule';
 import DashboardEditingModule from './DashboardEditingModule';
 import DashboardReviewModule from './DashboardReviewModule';
 import MessageBar from './MessageBar';
+import $ from 'jquery';
 
 //dashboard for user(allows editing of all user information stored in Mongo)
 
 class Dashboard extends Component {
+
+  componentDidMount(){
+    $('html, body').css({
+    overflow: 'auto',
+    height: 'auto'
+});
+}
 
   constructor(props) {
     super(props);

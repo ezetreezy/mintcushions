@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import DeadSpaceErik from './DeadSpaceErik';
 import VikingAmanda from './VikingAmanda';
+import $ from 'jquery';
 
-const Landing = () => {
+class Landing extends Component {
 
+  componentDidMount(){
+    $('html, body').css({
+    overflow: 'auto',
+    height: 'auto'
+});
+}
+
+  render(){
   return (
         <div className="landingWhole">
         <div className="landingInformation robot">
@@ -124,5 +133,5 @@ const Landing = () => {
       </div>
   );
 }
-
+}
 export default Landing;

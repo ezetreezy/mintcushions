@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {createUser, asyncValidate} from '../actions/index';
+import $ from 'jquery';
 //ReduxForm just handles the state of our form.
 
 //field will invoke renderField at some point in the future
@@ -10,6 +11,13 @@ import {createUser, asyncValidate} from '../actions/index';
 //must return some JSX
 //renderField(field = contains some event handlers)
 class CreateAccount extends Component {
+
+  componentDidMount(){
+    $('html, body').css({
+    overflow: 'hidden',
+    height: '100%'
+    });
+  }
 
   //field is a single input or state
   renderField(field)

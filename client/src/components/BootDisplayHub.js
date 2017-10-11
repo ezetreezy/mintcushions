@@ -3,9 +3,17 @@ import BootDisplay from './BootDisplay';
 import ReviewDisplay from './ReviewDisplay';
 import CreateReview from './CreateReview';
 import MessageBar from './MessageBar';
+import $ from 'jquery';
 //acts as a hub to allow user to read reviews, make review edit and delete.
 
 class BootDisplayHub extends Component {
+
+  componentDidMount(){
+    $('html, body').css({
+    overflow: 'auto',
+    height: 'auto'
+});
+}
 
   constructor(props){
     super(props);

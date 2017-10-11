@@ -1,9 +1,20 @@
 const passport = require('passport');
+const mongoose = require('mongoose');
+const User = mongoose.model('users');
+const keys = require('../config/keys');
+const cloudinary = require('cloudinary');
+const fs = require('fs');
+const upload = require('../middleware/fileUpload');
+
+cloudinary.config({
+  cloud_name: 'mintcushions',
+  api_key: keys.cloudinaryKey,
+  api_secret: keys.cloudinarySecretKey
+});
 
 ///ROUTE HANDLER (AUTHENTICATION)
 //expressappobject.http request(path),
 //let passport authenticate or respond
-
 
 //exports function from this file
 module.exports = (app) => {
@@ -57,40 +68,71 @@ module.exports = (app) => {
 
   app.post('/api/update', passport.authenticate('update'),
   (req, res) => {
-      console.log("Update in AuthRoutes");
       res.send(req.user);
   });
 
+  app.post('/api/updateAvatar', upload.single('Avatar'), async(req,res) => {
+
+        console.log("File", req.file);
+        console.log("User", req.user.id);
+        var results;
+
+        cloudinary.uploader.upload(req.file.path, async (result, error) => {
+
+          if(error)
+          throw error;
+
+          if(result)
+          {
+                    console.log("Result ", result);
+                    results = result.public_id;
+
+                    try{
+
+                        const user = await User.findById(req.user.id);
+                        if(user)
+                        {
+                          if(user.avatar !== 'sample')
+                          cloudinary.uploader.destroy(user.avatar, function(error, result){console.log(result)});
+
+                          user.avatar = results;
+                          const newuser = await user.save();
+                          //catch update user model and send back
+
+                          //check if file is in temp directory for uploaded files
+                          fs.stat(req.file.path, (err, stat) => {
+
+                            if(err === null)
+                            {
+                              console.log("File Exists and will begin deleting");
+                              //delete file
+                              fs.unlink('./' + req.file.path, (error) => {
+                                    if(error)
+                                    throw error;
+
+                                    console.log('File Deleting completed');
+                                });
+                            }
+                            else if(err.code === 'ENOENT')
+                              console.log("file exists");
+                            else
+                              console.log("Some other error!");
+                          });
+                            res.send(newuser);
+                        }
+
+                    } catch(err) {
+                        res.status(422).send(err);
+                    }
+          }
+
+        });
 
 
 
-  // app.post('/api/login', function(req, res, next ){
-  //     passport.authenticate('login', function(err, user, info) {
-  //       if (err) { return next(err) }
-  //       if (!user)
-  //       {
-  //         res.status(500);
-  //         res.json({message: "Failed Login"});
-  //         return;
-  //       }
-  //
-  //       return res.json({message:"Successful Login", email: req.user.email, password:req.user.password});
-  //     })(req, res, next);
-  // });
+
+
+
+  });
 
 };
-
-
-//   app.post('/api/createaccount', function(req, res, next ){
-//     passport.authenticate('local', function(err, user, info) {
-//       if (err) { return next(err) }
-//       if (!user)
-//       {
-//         res.status(401);
-//         res.end(info.message);
-//         return;
-//       }
-//
-//       return res.json(user);
-//     })(req, res, next);
-// });

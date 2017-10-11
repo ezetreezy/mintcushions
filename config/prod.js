@@ -5,5 +5,7 @@ module.exports = {
   mongoURL: process.env.MONGO_URL,
   cookieKey: process.env.COOKIE_KEY,
   stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
-  stripeSecreteKey: process.env.STRIPE_SECRET_KEY
+  stripeSecreteKey: process.env.STRIPE_SECRET_KEY,
+  cloudinaryKey: process.env.CLOUDINARY_KEY,
+  cloudinarySecretKey: process.env.CLOUDINARY_SECRET_KEY
 };

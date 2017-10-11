@@ -1,25 +1,62 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
-import {Link} from 'react-router-dom';
-import {updateUser} from '../actions/index';
+import {updateUser, updateAvatar} from '../actions/index';
+import onClickOutside from 'react-onclickoutside';
+import Dropzone from 'react-dropzone';
 
 
 class DashboardEditingModule extends Component {
 
 
   constructor(props) {
-
     super(props);
     this.renderField = this.renderField.bind(this);
-
   }
+
+  handleClickOutside(evt) {
+    this.props.cancelUser();
+  }
+
+  renderDropzoneInput(field) {
+  const files = field.input.value;
+  return (
+    <div className="thedrop">
+      <Dropzone style={{"width" : "100%", "height" : "100%", "border" : "1px dotted black", 'min-height' : "350px"}}
+                        name={field.name} onDrop={( filesToUpload, e ) => field.input.onChange(filesToUpload)}>
+        <div style={{"paddingTop" : "5px", "paddingBottom" : "5px"}}>
+        Drop or Click to add file for upload.<br/>
+        Supported Image Extensions: jpg,jpeg,png,gif,svg<br/><br/>
+        Click add features link in the navigation bar to enable this feature if the submit button is disabled.</div>
+      </Dropzone>
+      {field.meta.touched && field.meta.error && <span className="error">{field.meta.error}</span>}
+      {files && Array.isArray(files) && (
+        <ul className="nobullets">
+          { files.map((file, i) =>
+            <li className="list-group-item list-group-item-warning list-group-item-info flex-column align-items-start"
+            key={i}>{file.name + " Selected to Upload"}</li>) }
+        </ul>
+      )}
+    </div>
+  );
+}
+
   onSubmit(values) {
 
-    if(this.props.authorizedUser)
-    values.email = this.props.authorizedUser.email;
+    if(this.props.avatar){
+      var data = new FormData();
+      Object.keys(values).forEach(( key ) => {
+        data.append(key, values[key][0]);
+      });
+       //values.email = this.props.authorizedUser.email;
+       this.props.updateAvatar(data,  ()=>{this.props.cancelUser()});
+    }
 
+    if(this.props.authorizedUser && !this.props.avatar)
+    {
+    values.email = this.props.authorizedUser.email;
     this.props.updateUser(values, ()=>{this.props.cancelUser()});
+    }
 
   }
   renderField(field) {
@@ -118,89 +155,97 @@ class DashboardEditingModule extends Component {
     const { handleSubmit } = this.props;
     if(this.props.attribute)
     {
-    return(<div className="editing">
-           <p>Add some info about yourself. Ya know, those dank boots you are cutting them grass blades with.</p>
-           <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-           <Field
-           label= "FavBoots"
-           type="text"
-           name="favboots"
-           component={this.renderField}
-           placeholder="Your favorite boots"
-           />
-           <Field
-           label= "FootballPos"
-           type="text"
-           name="footballpos"
-           component={this.renderField}
-           placeholder="Your Position"
-           />
-           <Field
-           label= "TeamOn"
-           type="text"
-           name="teamon"
-           component={this.renderField}
-           placeholder="Team you play for"
-           />
-           <Field
-           label= "Location"
-           type="text"
-           name="location"
-           component={this.renderField}
-           placeholder="Where ya from"
-           />
-           <Field
-           label= "TeamSupport"
-           type="text"
-           name="teamsupport"
-           component={this.renderField}
-           placeholder="Team you support"
-           />
-           <button type="submit" className="btn payment-btn text-white btn-space" style={{backgroundColor: '#8A2BE2'}}> Submit </button>
-           <button type="button" onClick={this.props.cancelUser} className="btn payment-btn"> Cancel </button>
-           </form>
+    return(<div className="editingDashboardContainer robot">
+           <h5 className="editingTitle">Editing Wall Module</h5>
+           <hr/>
+             <div className="editingDashboardInput more robot">
+               <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+               <Field
+               label= "FavBoots"
+               type="text"
+               name="favboots"
+               component={this.renderField}
+               placeholder="Your favorite boots"
+               />
+               <Field
+               label= "FootballPos"
+               type="text"
+               name="footballpos"
+               component={this.renderField}
+               placeholder="Your Position"
+               />
+               <Field
+               label= "TeamOn"
+               type="text"
+               name="teamon"
+               component={this.renderField}
+               placeholder="Team you play for"
+               />
+               <Field
+               label= "Location"
+               type="text"
+               name="location"
+               component={this.renderField}
+               placeholder="Where ya from"
+               />
+               <Field
+               label= "TeamSupport"
+               type="text"
+               name="teamsupport"
+               component={this.renderField}
+               placeholder="Team you support"
+               />
+               <button type="submit" className="btn payment-btn text-white btn-space" style={{backgroundColor: '#8A2BE2'}}> Submit </button>
+               <button type="button" onClick={this.props.cancelUser} className="btn payment-btn"> Cancel </button>
+               </form>
+             </div>
            </div>);
     }
     else if(this.props.personal){
-    return(<div className="editing">
-           <p>Edit your personal information and upload your avatar.</p>
-           <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-           <Field
-           label= "First Name"
-           type="text"
-           name="firstname"
-           component={this.renderField}
-           placeholder="First Name"
-           />
-           <Field
-           label= "Last Name"
-           type="text"
-           name="lastname"
-           component={this.renderField}
-           placeholder="Last Name"
-           />
-           <Field
-           label= "Handle"
-           type="text"
-           name="handle"
-           component={this.renderField}
-           placeholder="Handle"
-           />
-           <Field
-           label= "Description"
-           type="text"
-           name="description"
-           component={this.renderField}
-           placeholder="Description"
-           />
-           <button type="submit" className="btn payment-btn text-white btn-space" style={{backgroundColor: '#8A2BE2'}}> Submit </button>
-           <button type="button" onClick={this.props.cancelUser} className="btn payment-btn"> Cancel </button>
-           </form>
-           </div>)
+    return(<div className="editingDashboardContainer robot">
+               <h5 className="editingTitle">Editing Personal Information Module</h5>
+               <hr/>
+               <div className="editingDashboardInput more robot">
+               <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+               <Field
+               label= "First Name"
+               type="text"
+               name="firstname"
+               component={this.renderField}
+               placeholder="First Name"
+               />
+               <Field
+               label= "Last Name"
+               type="text"
+               name="lastname"
+               component={this.renderField}
+               placeholder="Last Name"
+               />
+               <Field
+               label= "Handle"
+               type="text"
+               name="handle"
+               component={this.renderField}
+               placeholder="Handle"
+               />
+               <Field
+               label= "Description"
+               type="text"
+               name="description"
+               component={this.renderField}
+               placeholder="Description"
+               />
+               <button type="submit" className="btn payment-btn text-white btn-space" style={{backgroundColor: '#8A2BE2'}}> Submit </button>
+               <button type="button" onClick={this.props.cancelUser} className="btn payment-btn"> Cancel </button>
+               </form>
+               </div>
+            </div>)
         }
-        else{
-          return(<div className="editing">
-                 <p>Edit your email and password settings.</p>
+        else if(this.props.setting){
+          return(<div className="editingDashboardContainer robot">
+                 <h5 className="editingTitle">Editing Settings Module</h5>
+                 <hr/>
+                 <div className="editingDashboardInput more robot">
                  <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                  <Field
                  label= "Email Address"
@@ -233,8 +278,22 @@ class DashboardEditingModule extends Component {
                  <button type="submit" className="btn payment-btn text-white btn-space" style={{backgroundColor: '#8A2BE2'}}> Submit </button>
                  <button type="button" onClick={this.props.cancelUser} className="btn payment-btn"> Cancel </button>
                  </form>
-                 </div>)
-        }
+                 </div>
+                 </div>) }
+              else if(this.props.avatar)
+              return(<div className="editingDashboardContainer robot">
+                      <h5 className="editingTitle">Editing Avatar</h5>
+                      <hr/>
+                      <div className="editingDashboardInput more robot">
+                        <form encType="multipart/form-data" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                            <Field name="Avatar" type="file" component={this.renderDropzoneInput}/>
+                            <button type="submit" disabled={this.props.authorizedUser.enabled ? '' : 'disabled'} className="btn payment-btn text-white btn-space" style={{backgroundColor: '#8A2BE2'}}> Submit </button>
+                            <button type="button" onClick={this.props.cancelUser} className="btn payment-btn"> Cancel </button>
+                        </form>
+                      </div>
+                      </div>)
+
+
   }
 }
 
@@ -270,10 +329,10 @@ function validate(values)
 
 }
 
-
+DashboardEditingModule = onClickOutside(DashboardEditingModule);
 export default reduxForm({
   validate,
   form: 'EditingAccountForm'
 })(
-  connect(mapStateToProps, { updateUser })(DashboardEditingModule)
+  connect(mapStateToProps, { updateUser, updateAvatar })(DashboardEditingModule)
 );

@@ -8,13 +8,13 @@ class Payments extends Component {
   render() {
     return (
       <StripeCheckout
-      name="bootlicious"
+      name="mintcushions"
       description="CC# 4242 4242 4242 4242"
       amount={500}
       token={token => this.props.grabStripeToken(token)}
       stripeKey={process.env.REACT_APP_STRIPE_KEY}
       >
-      <button className="btn btn-secondary payment-btn">Add Features <span className="fa fa-credit-card" aria-hidden="true"></span></button>
+      <a href='#' className="nav-link features" style={{color: 'white'}}>Add Features</a>
       </StripeCheckout>
     );
   }

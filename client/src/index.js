@@ -9,6 +9,8 @@ import {createStore, applyMiddleware} from 'redux';
 import App from './components/App';
 import reducers from './reducers';
 import reduxThunk from 'redux-thunk';
+import axios from 'axios';
+window.axios = axios;
 
 //new instance of our redux store(reducers,
 //initial state of our app(server side rendering,

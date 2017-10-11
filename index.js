@@ -9,6 +9,8 @@ const bodyParser = require('body-parser');
 
 //(function)run mongoose to create schema, models, etc..
 require('./models/User');
+require('./models/Review');
+require('./models/Boot');
 //(function)does not need to return anything just run the function
 require('./services/passport');
 //set up config that will listen to requests from nodeJS
@@ -36,6 +38,8 @@ app.use(passport.session());
 //immediatly call the function with the app object IIFE
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/reviewRoutes')(app);
+require('./routes/bootRoutes')(app);
 
 if(process.env.NODE_ENV === 'production'){
   //production code | express serves up assets

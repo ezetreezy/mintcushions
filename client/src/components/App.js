@@ -6,11 +6,11 @@ import * as actions from '../actions';
 import Header from './Header';
 import Landing from './Landing';
 import CreateAccount from './CreateAccount';
-import MessageBar from './MessageBar';
 import LoginAccount from './LoginAccount';
 import Dashboard from './Dashboard';
+import BootListDisplay from './BootListDisplay';
+import BootDisplayHub from './BootDisplayHub';
 
-const ReviewNew = () => <h2>Review New</h2>
 
 //BrowserRouter ->
 //brains of react-router-dom, looks at current url, and changes the set of components
@@ -35,10 +35,10 @@ class App extends Component {
               <BrowserRouter>
                 <div>
                   <Header />
-                  <MessageBar />
                   <Route exact path="/" component={Landing} />
+                  <Route exact path="/boots/:bootbrand/:bootname" component={BootDisplayHub} />
+                  <Route exact path="/boots/:bootbrand" component={BootListDisplay} />
                   <Route exact path="/dashboard" component={Dashboard} />
-                  <Route path="/reviews/new" component={ReviewNew} />
                   <Route path="/createaccount" component={CreateAccount} />
                   <Route path="/login" component={LoginAccount} />
                 </div>

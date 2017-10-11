@@ -10,7 +10,6 @@ const userSchema = new Schema({
   lastname: String,
   email: String,
   password: String,
-  credits: {type: Number, default: 0},
   enabled: {type: Boolean, default: false},
   teamon: {type: String, default: "Team I am on"},
   teamsupport: {type: String, default: "Team I Support"},
@@ -19,6 +18,8 @@ const userSchema = new Schema({
   handle: {type: String, default: "My Handle"},
   location: {type: String, default: "Location"},
   about: {type: String, default: "Quick description of your play style"},
+  numberofReviews: {type: Number, default: 0},
+  avatar: {type: String, default: "sample"}
 });
 
 

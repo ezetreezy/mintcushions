@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {loginUser} from '../actions/index';
+import MessageBar from './MessageBar';
 //ReduxForm just handles the state of our form.
 
 //field will invoke renderField at some point in the future
@@ -50,9 +51,10 @@ class LoginAccount extends Component {
     const { handleSubmit } = this.props;
 
     return(
-      <div>
-      <div style={{textAlign: 'center'}}>
+      <div className="createAccountContainer robot">
+      <div className="create-account" >
       <h3>Login</h3>
+      <MessageBar />
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
           label= "Email Address"

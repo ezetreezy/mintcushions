@@ -1,5 +1,16 @@
 import axios from 'axios';
 import {FETCH_USER,
+        FETCH_BOOTS,
+        FETCH_BOOT,
+        FETCH_REVIEW,
+        FETCH_USER_REVIEWS,
+        FETCH_REVIEWS,
+        SUBMIT_REVIEW_MESSAGE_SUCCESS,
+        SUBMIT_REVIEW_MESSAGE_ERROR,
+        SUBMIT_REVIEW_EDIT_MESSAGE_SUCCESS,
+        SUBMIT_REVIEW_EDIT_MESSAGE_ERROR,
+        ERROR_DELETE_REVIEW,
+        SUCCESSFUL_DELETE_REVIEW,
         SIGNUP_MESSAGE_ERROR,
         SIGNUP_MESSAGE_SUCCESS,
         PAYMENT_MESSAGE_ERROR,
@@ -19,6 +30,91 @@ export const fetchUser = () => async dispatch => {
     dispatch({ type: FETCH_USER, payload: response.data });
   }
 
+//gets all specific boots from a brand name (bootRoutes)(multiple)
+export const fetchBoots = (bootbrand) => async dispatch => {
+
+  const response = await axios.get('/api/boots/' + bootbrand);
+
+  dispatch({type: FETCH_BOOTS, payload: response.data });
+}
+
+//get a specific type of boot(single)
+export const fetchBoot = (bootbrand, bootname) => async dispatch => {
+
+  const response = await axios.get('/api/boots/' + bootbrand + '/' + bootname);
+
+  dispatch({type: FETCH_BOOT, payload: response.data});
+}
+
+//get all reviews for boot(MULTIPLE)
+export const fetchReviews = (bootbrand, bootname) => async dispatch => {
+
+  const response = await axios.get('/api/reviews/' + bootbrand + '/' + bootname);
+
+  dispatch({type: FETCH_REVIEWS, payload: response.data});
+}
+
+//get all user reviews via user_id
+export const fetchUserReviews = () => async dispatch => {
+
+  const response = await axios.get('/api/user/reviews/');
+
+  dispatch({type: FETCH_USER_REVIEWS, payload: response.data});
+}
+
+//get a single review for boot(SINGLE)(reviewRoutes)
+export const fetchReview = (reviewID) => async dispatch => {
+
+  const response = await axios.get('/api/reviews/' + reviewID);
+
+  dispatch({type: FETCH_REVIEW, payload: response.data});
+}
+
+export const submitReview = (review, callback) => async dispatch => {
+
+        try{
+        const request = await axios.post('/api/reviews/', review);
+
+        if(request) {
+        callback();
+        dispatch({type: SUBMIT_REVIEW_MESSAGE_SUCCESS});
+        } }
+        catch(e) {
+        dispatch({type: SUBMIT_REVIEW_MESSAGE_ERROR});
+        }
+}
+
+export const editReview = (review, callback) => async dispatch => {
+
+        try{
+        const request = await axios.post('/api/reviews/edit', review);
+
+        if(request) {
+        callback();
+        dispatch({type: SUBMIT_REVIEW_EDIT_MESSAGE_SUCCESS});
+        } }
+        catch(e) {
+        dispatch({type: SUBMIT_REVIEW_EDIT_MESSAGE_ERROR});
+        }
+}
+
+export const deleteReview = (bootname, id, callback) => async dispatch => {
+
+  console.log("in index ", bootname);
+  try{
+  const request = await axios.delete('/api/delete/'+ bootname + '/' + id);
+
+  if(request) {
+  callback();
+  dispatch({type: SUCCESSFUL_DELETE_REVIEW});
+
+  } }
+  catch(e) {
+  dispatch({type: ERROR_DELETE_REVIEW});
+  }
+
+}
+
 export const createUser = (values, callback) => async dispatch => {
 
   try {
@@ -27,10 +123,10 @@ export const createUser = (values, callback) => async dispatch => {
   {
     dispatch({ type: FETCH_USER, payload: request.data });
     callback();
-    dispatch({type: SIGNUP_MESSAGE_SUCCESS})
+    dispatch({type: SIGNUP_MESSAGE_SUCCESS});
   } }
     catch(e)  {
-    {dispatch({type: SIGNUP_MESSAGE_ERROR})}
+    dispatch({type: SIGNUP_MESSAGE_ERROR});
   }
 
 }
@@ -90,6 +186,24 @@ export const updateUser = (values, callback) => async dispatch => {
   }
 
 }
+
+//updating the user info
+export const updateAvatar = (data, callback) => async dispatch => {
+
+  try {
+  const request = await axios.post('/api/updateAvatar', data);
+  if(request)
+  {
+    dispatch({ type: FETCH_USER, payload: request.data });
+    callback();
+    dispatch({type: UPDATE_MESSAGE_SUCCESS});
+  } }
+    catch(e)  {
+    dispatch({type: UPDATE_MESSAGE_ERROR});
+  }
+
+}
+
 
 //handling payment tokens
 export const grabStripeToken = (token) => async dispatch => {

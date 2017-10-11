@@ -67,8 +67,8 @@ class CreateAccount extends Component {
     const { handleSubmit } = this.props;
 
     return(
-        <div>
-         <div style={{textAlign: 'center'}}>
+        <div className="createAccountContainer robot">
+         <div className="create-account">
           <h3>Join our app</h3>
           <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
               <Field

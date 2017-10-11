@@ -104,16 +104,16 @@ const Landing = () => {
             </div>
         </div>
         <div className="techStack robot">
-          <div className="builtWithdiv">
-            <p>powered by:</p>
-          </div>
-          <div className="svgdiv">
-            <img src={require('../Assets/nodeJSLogo.svg')} alt={"NodeJS"} />
-            <img src={require('../Assets/bootstrapLogo.svg')} alt={"Bootstrap"}/>
-            <img src={require('../Assets/reactLogo.svg')} alt={"React"} className="react"/>
-            <img src={require('../Assets/reduxLogo.svg')} alt={"Redux"}/>
-            <img src={require('../Assets/mongoDBLogo.svg')} alt={"MongoDB"}/>
-          </div>
+              <div className="builtWithdiv">
+                <p>powered by:</p>
+              </div>
+              <div className="svgdiv">
+                <img src={require('../Assets/nodeJSLogo.svg')} alt={"NodeJS"} />
+                <img src={require('../Assets/bootstrapLogo.svg')} alt={"Bootstrap"}/>
+                <img src={require('../Assets/reactLogo.svg')} alt={"React"} className="react"/>
+                <img src={require('../Assets/reduxLogo.svg')} alt={"Redux"}/>
+                <img src={require('../Assets/mongoDBLogo.svg')} alt={"MongoDB"}/>
+              </div>
         </div>
         <div className="landingDetails">
               <div className="engineeredWithImages robot">

@@ -786,9 +786,13 @@
   }
   .face.back {
     display: block;
-    transform: rotateX(180deg);
-    -ms-transform: rotateX(180deg);
+    /*
+    -moz-transform: rotateX(180deg);
     -webkit-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+    */
     box-sizing: border-box;
     color: white;
     text-align: center;
@@ -800,18 +804,26 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  /*
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%); /* IE 9 */
+  -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+  -moz-transform:  translateX(-50%) translateY(-50%);
+  -webkit-transform:  translateX(-50%) translateY(-50%);
+  -o-transform:  translateX(-50%) translateY(-50%);
+  -ms-transform:  translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
   }
   .envelope p{
     padding:0;
     margin:0;
   }
   .landingWrapper-item:hover{
-    transform: rotateX(180deg);
-    -ms-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
     -webkit-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    transform: rotateX(180deg);
   }
   .landingWrapper-item.medium{
     grid-row: span 2;

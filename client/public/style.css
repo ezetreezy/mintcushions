@@ -761,6 +761,7 @@
   .landingWrapper {
     display: grid;
     height: 100%;
+    width: 100%;
     grid-template-rows: repeat(8, 1fr);
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 5px;
@@ -794,8 +795,6 @@
     -webkit-transition: all 0.8s ease-in-out;
   }
   .front {
-    transition: all 0.8s ease-in-out;
-    -webkit-transition: all 0.8s ease-in-out;
     -moz-transform: rotateX(0deg);
     -webkit-transform: rotateX(0deg);
     -o-transform: rotateX(0deg);
@@ -1012,15 +1011,10 @@
 
     /* Dead Space SVG and animations*/
     .deadspaceerik,.vikingamanda{
-    padding-right: 5%;
-    padding-left: 5%;
     height: 100%;
     width: 50%;
     display: inline-block;
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 2.5%;
     margin: auto;
     color: white;
   }
@@ -1896,7 +1890,7 @@
   /*Landing*/
   .landingMain{
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     flex: 1 1 100%;
     padding-top: 2.5%;
     padding-bottom: 2.5%;
@@ -1908,8 +1902,8 @@
     text-align: center;
     width: 100%;
     height: 25%;
-    padding-right: 1%;
-    padding-left: 1%;
+    padding-right: 10%;
+    padding-left: 10%;
     padding-bottom: 1%;
     padding-top: 5%;
     background: rgba(44,46,48,1.0);
@@ -1918,6 +1912,7 @@
   .landingWrapper {
     display: grid;
     height: 100%;
+    width: 100%;
     grid-template-rows: repeat(8, 1fr);
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 5px;

@@ -784,41 +784,39 @@
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
     display:flex;
     align-items: center;
     justify-content:center;
   }
   .face.back {
     display: block;
-    -moz-transform: rotateX(180deg);
-    -webkit-transform: rotateX(180deg);
-    -o-transform: rotateX(180deg);
-    -ms-transform: rotateX(180deg);
-    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
     box-sizing: border-box;
     color: white;
     text-align: center;
     font-size: 10px;
     display: flex;
     position:relative;
+    -moz-transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    transform: rotateX(180deg);
   }
   .envelope{
   position: absolute;
   top: 50%;
   left: 50%;
-  text-align: center;
-  margin: 0 auto;
-  /*
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
-  /*
   -moz-transform:  translateX(-50%) translateY(-50%);
   -webkit-transform:  translateX(-50%) translateY(-50%);
   -o-transform:  translateX(-50%) translateY(-50%);
   -ms-transform:  translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  */
   }
   .envelope p{
     padding:0;

@@ -147,7 +147,7 @@ function validate(values)
   if(values.firstname)
   {
     if(values.firstname[0] !== values.firstname[0].toUpperCase())
-      errors.firstname = "Fist letter must be capitalized"
+      errors.firstname = "First letter must be capitalized"
   }
 
   if(!values.lastname)

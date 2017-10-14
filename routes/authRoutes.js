@@ -95,6 +95,8 @@ module.exports = (app) => {
                           if(user.avatar !== 'sample')
                           cloudinary.uploader.destroy(user.avatar, function(error, result){console.log(result)});
 
+
+                          //maybe can use set here beccause of just updating one instance
                           user.avatar = results;
                           const newuser = await user.save();
                           //catch update user model and send back

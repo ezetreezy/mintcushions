@@ -8,11 +8,11 @@ const Boot = mongoose.model('boots');
 //req.params are our wild cards
 module.exports = app => {
 
-  //get single review
+  //get single review(returns Object)
   app.get('/api/reviews/:reviewID', async(req,res) => {
 
     try{
-      const review = await Review.find({_reviewID: req.params.reviewID});
+      const review = await Review.findOne({_reviewID: req.params.reviewID});
 
       if(review)
       res.send(review);
@@ -25,6 +25,8 @@ module.exports = app => {
   //get multiple reviews per boot
   app.get('/api/reviews/:bootBrand/:bootName/', async (req,res) => {
 
+    //find because we want multiple (returns array)
+
     try{
     const reviews = await Review.find( {bootname: req.params.bootName});
 
@@ -35,7 +37,7 @@ module.exports = app => {
   }
   });
 
-  //get all reviews per user_id
+  //get all reviews per user_id(returns array)
   app.get('/api/user/reviews/', requireLogin, async (req,res) => {
 
     try{
@@ -77,22 +79,14 @@ module.exports = app => {
 
       //save
       try{
-      const thereview = await review.save();
-      req.user.numberofReviews += 1;
-      //async and remember when we save user it
-      //becomes stale so we use user model returned from save operation
-      const user = await req.user.save();
-
       const boot = await Boot.findOne( {name: bootname});
-      if(boot)
-      {
+      if(boot){
         boot.reviewCount += 1;
-        await boot.save();
-      }
-
-      //catch update user model and send back
-      res.send(thereview);
-      } catch(err) {
+        req.user.numberofReviews += 1;
+        const promises = [review.save(), boot.save(), req.user.save()];
+        await Promise.all(promises);
+        res.send(promises[0]);
+      } } catch(err) {
         res.status(422).send(err);
       }
   });
@@ -127,6 +121,8 @@ module.exports = app => {
           }
   });
 
+    ///edit may need to decrement reviewCount -=1 line 147
+    //this needs major refactor
     app.delete('/api/delete/:bootname/:id', requireLogin, async (req, res) => {
 
             Review.deleteOne({_reviewID: req.params.id}, (err, results) => {
@@ -139,15 +135,12 @@ module.exports = app => {
             const boot = await Boot.findOne({name: req.params.bootname});
             if(boot)
             {
-              boot.reviewCount += 1;
-              await boot.save();
-            }
-
-            req.user.numberofReviews -= 1;
-            const user = await req.user.save();
-
-            res.send(user);
-            }
+              boot.reviewCount -= 1;
+              req.user.numberofReviews -= 1;
+              const promises = [boot.save(), req.user.save()];
+              await Promise.all(promises);
+              res.send(promises[1]);
+            } }
             catch(err){
               res.status(422).send(err);
             }
@@ -155,3 +148,7 @@ module.exports = app => {
     });
 
 };
+//The Promise.all() function takes an array of promises,
+//and returns a promise that waits for every promise in
+//the array to resolve and then resolves to an array that
+//contains the value each promise in the original array resolved to

@@ -20,22 +20,18 @@ class ReviewDisplay extends Component {
   }
 
   render() {
-    const {activeReviewList, reviewID, authorizedUser} = this.props;
-    if(!activeReviewList || _.isEmpty(activeReviewList))
+    const {authorizedUser, review} = this.props;
+    if(!review)
     return(<div className="editingContainer robot"><LoadingModule text={"Loading Reviews"}/></div>);
     else
     {
-
-    const review = activeReviewList[reviewID];
-    var date = new Date(review.dateReviewed);
-
       if(authorizedUser && authorizedUser._id != null)
           if(authorizedUser._id !== review._user)
             return(<div className="editingContainer reviewDisplay robot">
                   <div className="theReview">
                         <div className="reviewHeader">
                           <h6 className="rLeft">{review.title}</h6>
-                          <h6 className="rRight">{date.toDateString()}</h6>
+                          <h6 className="rRight">{new Date(review.dateReviewed).toDateString()}</h6>
                         </div>
                         <div className="quickStats"><h6>{review.reviewName}</h6></div>
                         <div className="reviewBody">
@@ -72,9 +68,10 @@ class ReviewDisplay extends Component {
   }
 }
 
-
-function mapStateToProps(state) {
-  return {activeReviewList: state.activeReviewList,
+//this.props === ownprops
+//ownprops is the props object headed to this component
+function mapStateToProps(state, ownProps) {
+  return {review: state.activeReviewList[ownProps.reviewID],
           authorizedUser: state.authorizedUser};
 }
 

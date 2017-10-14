@@ -8,6 +8,7 @@ module.exports = app => {
 
   app.get('/api/boots/:bootBrand/:bootName/', async (req, res) => {
 
+      //returns object
       try{
       const boot = await Boot.findOne( {name: req.params.bootName});
 
@@ -21,6 +22,7 @@ module.exports = app => {
 
   app.get('/api/boots/:bootBrand/', async (req, res)=> {
 
+      //returns array
       try{
       const boots = await Boot.find( {brand: req.params.bootBrand});
 

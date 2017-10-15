@@ -44,7 +44,6 @@ class Dashboard extends Component {
                    editingAvatar: false});
   }
   editAvatar(){
-    console.log("editAvatar()");
     this.setState({editingInProgress: true , editingUserAttributes: false,
                    editingUserPersonal: false, editingUserSettings: false,
                    editingAvatar: true});

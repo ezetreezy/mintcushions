@@ -15,9 +15,9 @@ class BootDisplay extends Component {
     this.props.fetchReviews(bootbrand, bootname);
   }
   renderBootHeader() {
-      const {bootname, activeBootList, authorizedUser, activeReviewList} = this.props;
-      const boot = activeBootList[bootname];
-      var disabled = '';
+      const {bootname, boot, authorizedUser, activeReviewList} = this.props;
+
+      let disabled = '';
       if(!_.isEmpty(activeReviewList) && authorizedUser != null){
           var keys = Object.keys(activeReviewList);
           var filtered = keys.filter(function(key) {
@@ -44,8 +44,7 @@ class BootDisplay extends Component {
   }
 
   renderBootStats() {
-    const {activeReviewList, bootname, activeBootList} = this.props;
-    const boot = activeBootList[bootname];
+    const {activeReviewList, bootname, boot} = this.props;
 
     if(!_.isEmpty(activeReviewList))
     {
@@ -141,7 +140,7 @@ class BootDisplay extends Component {
   renderReviews(){
     const {authorizedUser, activeReviewList} = this.props;
     return _.map(activeReviewList, review => {
-    var isUserReview;
+    let isUserReview;
       if(authorizedUser && authorizedUser._id != null)
       {
        isUserReview = authorizedUser._id === review._user ?
@@ -171,8 +170,8 @@ class BootDisplay extends Component {
   }
 
   render(){
-    const {activeReviewList, activeBootList, reviewOpen, makingReview} = this.props;
-    if(!activeReviewList || _.isEmpty(activeBootList))
+    const {activeReviewList, boot, reviewOpen, makingReview} = this.props;
+    if(!activeReviewList || !boot)
     return(<div><LoadingModule text={"Calculating Boot Stats"}/></div>);
     else
     return(
@@ -199,8 +198,8 @@ function getSum(total, num){
 //ownprops is the second argument to mapStateToProps
 //passed directly to the component
 //this.props === ownProps
-function mapStateToProps(state) {
-  return {activeBootList: state.activeBootList,
+function mapStateToProps(state, ownProps) {
+  return {boot: state.activeBootList[ownProps.bootname],
           activeReviewList: state.activeReviewList,
           authorizedUser: state.authorizedUser};
 }

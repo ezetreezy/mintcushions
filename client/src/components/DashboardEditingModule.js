@@ -44,7 +44,7 @@ class DashboardEditingModule extends Component {
   onSubmit(values) {
 
     if(this.props.avatar){
-      var data = new FormData();
+      let data = new FormData();
       Object.keys(values).forEach(( key ) => {
         data.append(key, values[key][0]);
       });
@@ -60,8 +60,8 @@ class DashboardEditingModule extends Component {
 
   }
   renderField(field) {
-    var spanClassName = "";
-    var placeholderValue = "";
+    let spanClassName = "";
+    let placeholderValue = "";
     switch(field.label)
     {
       case "First Name":

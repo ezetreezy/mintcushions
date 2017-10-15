@@ -15,6 +15,8 @@ cloudinary.config({
 ///ROUTE HANDLER (AUTHENTICATION)
 //expressappobject.http request(path),
 //let passport authenticate or respond
+//Efficiency Tip: Try to do bulk updates in the db and not
+//load data onto the server, change, and save and send  back
 
 //exports function from this file
 module.exports = (app) => {

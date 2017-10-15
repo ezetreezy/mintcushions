@@ -24,7 +24,7 @@ class CreateAccount extends Component {
   {
     const { meta: {touched, error} } = field;
     const className = `form-group ${touched && error ? 'has-danger' : ''}`;
-    var spanClassName = '';
+    let spanClassName = '';
     switch(field.label){
       case 'Email Address':
       spanClassName = 'fa fa-envelope-o fa-fw';

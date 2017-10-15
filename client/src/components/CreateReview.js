@@ -4,6 +4,7 @@ import onClickOutside from 'react-onclickoutside';
 import {Field, reduxForm} from 'redux-form';
 import {submitReview, fetchReviews, fetchReview, editReview, deleteReview} from '../actions/index';
 import _ from 'lodash';
+import LoadingModule from './LoadingModule';
 
 
 class CreateReview extends Component {
@@ -59,7 +60,7 @@ class CreateReview extends Component {
   }
 
   render() {
-    const { handleSubmit, activeReviewList} = this.props;
+    const { handleSubmit, review} = this.props;
 
     if(!this.props.alreadyHaveValues)
     return(<div className="editingContainer editingReview robot">
@@ -158,11 +159,10 @@ class CreateReview extends Component {
           </div>);
           else {
 
-              if(!activeReviewList || _.isEmpty(activeReviewList))
-              return(<div>Loading Modules...</div>);
-              else{
-                  const review = activeReviewList[this.props.reviewID];
-                  return(<div className="editingContainer editingReview robot">
+              if(!review)
+              return(<div><LoadingModule text={"Loading Review"}/></div>);
+              else
+              return(<div className="editingContainer editingReview robot">
                         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                         <h3>{this.props.bootname}</h3>
                         <small>Edit Your Previous Review</small>
@@ -257,8 +257,6 @@ class CreateReview extends Component {
                         <button type="button" onClick={this.props.reviewDone} className="btn btn-secondary payment-btn text-white btn-space-top"> Cancel </button>
                         </form>
                         </div>);
-              }
-
           }
         }
       }
@@ -322,8 +320,8 @@ function validate(values)
 }
 
 
-function mapStateToProps(state) {
-  return {activeReviewList: state.activeReviewList,
+function mapStateToProps(state, ownProps) {
+  return {review: state.activeReviewList[ownProps.reviewID],
           authorizedUser: state.authorizedUser};
 }
 

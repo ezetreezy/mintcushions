@@ -13,8 +13,8 @@ class MessageBar extends Component {
 
   renderBar()
   {
-      var divclassName = '';
-      var spanclassName = '';
+      let divclassName = '';
+      let spanclassName = '';
       if(this.props.error) {
 
         if(this.props.error.message !== "Empty")

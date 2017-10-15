@@ -6,7 +6,7 @@ cloudinaryConfig({ cloud_name: 'mintcushions' });
 class DashboardModule extends Component {
 
   render(){
-    var myAvi = '';
+    let myAvi = '';
     if(this.props.authorizedUser)
     {
         if(this.props.authorizedUser.avatar === 'sample')

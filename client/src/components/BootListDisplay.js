@@ -12,7 +12,7 @@ class BootListDisplay extends Component {
   //this.props.match.params is provided by react
   //match is top level, params is all the wild cards listed
   componentDidMount(){
-    var {bootbrand} = this.props.match.params;
+    let {bootbrand} = this.props.match.params;
 
     if(bootbrand === 'NewBalance')
       bootbrand = 'New Balance';

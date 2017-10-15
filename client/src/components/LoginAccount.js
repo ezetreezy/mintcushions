@@ -24,7 +24,7 @@ class LoginAccount extends Component {
   {
       const { meta: {touched, error} } = field;
       const className = `form-group ${touched && error ? 'has-danger' : ''}`;
-      var spanClassName = '';
+      let spanClassName = '';
       if(field.type === 'password')
       spanClassName = 'fa fa-key fa-fw';
       else

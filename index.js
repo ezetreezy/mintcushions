@@ -40,13 +40,16 @@ require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 require('./routes/reviewRoutes')(app);
 require('./routes/bootRoutes')(app);
-
+//express should be ready for:
+//there are some routes express is ready for
+//there are even more routes that express should say hey here is my index.html
+//there are more routes that want to access specific files like index.js
 if(process.env.NODE_ENV === 'production'){
   //production code | express serves up assets
-  //main.js or main.css file,etc..
+  //main.js or main.css file,etc.. -> look into our client/build dir
   app.use(express.static('client/build'));
 
-  //express will serve up index.html if route is not recognized
+  //express will serve up index.html if route is not recognized(not defined in our routehandlers)
   //kick user to client side of our app(React Router handles the rest)
   //must catch anything that falls through
   const path = require('path');

@@ -1,11 +1,12 @@
 # MintCushions
 
-Full Stack Web Application
+Full Stack Web Application<br/>
+Soccer Cleat/Football Boot Review Site
 
 # Contributors
 
-[Engineer](http://www.eriksnoww.com)
-[Graphic Design Artist](http://www.amandabaenz.com)
+* [Erik Polderman](http://www.eriksnoww.com) - Engineer
+* [Amanda Saenz](http://www.amandabaenz.com) - Graphic Design Artist
 
 ## Built With (the big chunks)
 

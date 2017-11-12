@@ -13,6 +13,8 @@ Soccer Cleat/Football Boot Review Site
 * [CreateReactApp](https://github.com/facebookincubator/create-react-app) - Frontend UI Library
 * [Redux](https://redux.js.org/) - Frontend State Management
 * [Node](https://nodejs.org/en/) - Backend Web Server
+* [Express](https://expressjs.com/) - Backend Web Server Helper Library
+* [Passport](http://www.passportjs.org/) - Authentication Helper Library(GoogleOAuth + Username/Password)
 
 ## Live Here
 

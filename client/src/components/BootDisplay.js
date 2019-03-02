@@ -17,10 +17,10 @@ class BootDisplay extends Component {
 
     let disabled = '';
     if (!_.isEmpty(activeReviewList) && authorizedUser != null) {
-      var keys = Object.keys(activeReviewList);
-      var filtered = keys.filter(function(key) {
-        if (authorizedUser._id === activeReviewList[key]._user) disabled = 'disabled';
-      });
+      // let keys = Object.keys(activeReviewList);
+      // let filtered = keys.filter(function(key) {
+      //   if (authorizedUser._id === activeReviewList[key]._user) disabled = 'disabled';
+      // });
     }
 
     return (
@@ -49,7 +49,7 @@ class BootDisplay extends Component {
   }
 
   renderBootStats() {
-    const { activeReviewList, bootname, boot } = this.props;
+    const { activeReviewList, boot } = this.props;
 
     if (!_.isEmpty(activeReviewList)) {
       const traction = Object.keys(activeReviewList).map(trac => {

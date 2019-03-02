@@ -18,10 +18,7 @@ require('./models/Boot');
 require('./services/passport');
 //set up config that will listen to requests from nodeJS
 mongoose.Promise = global.Promise;
-mongoose.connect(
-  keys.mongoURL,
-  options
-);
+mongoose.connect(keys.mongoURL, options);
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -66,4 +63,6 @@ if (process.env.NODE_ENV === 'production') {
 
 //runtime env variable from deployment + our dev port
 const PORT = process.env.PORT || 8080;
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log('App running on port', PORT);
+});

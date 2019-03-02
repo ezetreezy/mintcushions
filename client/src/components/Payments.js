@@ -13,7 +13,7 @@ class Payments extends Component {
         token={token => this.props.grabStripeToken(token)}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}
       >
-        <a href="#" className="nav-link features" style={{ color: 'white' }}>
+        <a className="nav-link features" style={{ color: 'white' }}>
           Add Features
         </a>
       </StripeCheckout>

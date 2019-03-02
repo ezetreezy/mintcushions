@@ -246,7 +246,7 @@ class BootDisplay extends Component {
 
       return (
         <li className={isUserReview} key={review._reviewID}>
-          <a href="#" onClick={() => this.props.changeID(review._reviewID)}>
+          <a onClick={() => this.props.changeID(review._reviewID)}>
             <div className="reviewLeft">
               <h5>{review.title + ' '}</h5>
               <small>{review.reviewName + ' '}</small>

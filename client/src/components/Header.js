@@ -138,7 +138,7 @@ class Header extends Component {
               <a
                 className="nav-link"
                 style={{ color: 'white' }}
-                href="https://github.com/ezetreezy/bootReview"
+                href="https://github.com/ezetreezy/mintcushions"
                 data-toggle="tooltip"
                 title="Source/Github"
                 data-placement="auto"

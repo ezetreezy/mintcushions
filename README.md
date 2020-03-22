@@ -1,5 +1,7 @@
 # MintCushions
 
+![](mint.gif)
+
 ### Current Update: Currently this project is slowly being updated to use React v16.
 
 ### This project was created to learn full stack programming with a focus on UI.
